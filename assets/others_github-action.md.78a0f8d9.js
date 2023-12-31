@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as o}from"./chunks/framework.a0bee448.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"others/github-action.md","filePath":"others/github-action.md"}'),a={name:"others/github-action.md"};function r(c,n,s,i,h,p){return e(),o("div")}const m=t(a,[["render",r]]);export{d as __pageData,m as default};
