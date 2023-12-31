@@ -1,5 +1,5 @@
 import type { HeadConfig } from "vitepress";
 
 export const head: HeadConfig[] = [
-    ['link', { rel: "icon", href: "/note-sth/kirby_icon.svg"}],
+    ['link', { rel: "icon", href: "/note-sth-demo/kirby_icon.svg"}],
 ]

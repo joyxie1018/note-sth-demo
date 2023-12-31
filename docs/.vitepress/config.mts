@@ -5,7 +5,7 @@ import { head } from './configs/head'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/note-sth/',
+  base: '/note-sth-demo/',
   title: "讀書筆記",
   description: "記錄一些小東西",
   head,
