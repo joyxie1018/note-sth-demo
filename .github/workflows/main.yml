@@ -1,0 +1,43 @@
+name: deploy gh-pages demo
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build and deploy gh-pages
+    env:
+      MY_SECRET   : ${{secrets.commit_secret}}
+      USER_NAME   : joyxie1018
+      USER_EMAIL  : joyxie1018@gmail.com
+      PUBLISH_DIR : ./docs/.vitepress/dist
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: |
+        rm -rf node_modules/
+        npm install
+    - name: npm run docs:build
+      run: |
+        npm run docs:build
+    - name: Commit files
+      run: |
+        cd $PUBLISH_DIR
+        git init
+        git config --local user.name $USER_NAME
+        git config --local user.email $USER_EMAIL
+        git status
+        git remote add origin https://$MY_SECRET@github.com/joyxie1018/note-sth-demo.git
+        git checkout -b gh-pages
+        git add --all
+        git commit -m "deploy to Github pages"
+        git push origin gh-pages -f
+        echo 🤘 deploy gh-pages complete.
